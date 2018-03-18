@@ -117,3 +117,12 @@ a:hover {
 .timeline-right {
 	border-right: 5px solid #1976D2;
 }
+
+@media only screen and (max-width: 575px) {
+	.breakpoint-mobile-hide {
+		display: none;
+	}
+	.timeline-right {
+		border-right: none;
+	}
+}
