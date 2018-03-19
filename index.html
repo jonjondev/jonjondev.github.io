@@ -423,12 +423,13 @@
 									<h4 class="text-center">Send me a message or...</h4>
 									<br>
 									<div class="md-form">
-									    <input type="text" id="form1" class="form-control" placeholder="name">
-									    <input type="text" id="form1" class="form-control" placeholder="subject">
-									    <input type="text" id="form1" class="form-control" placeholder="email">
-									    <textarea type="text" id="form1" class="form-control md-textarea" rows="3" placeholder="message"></textarea>
-									    <br>
-									    <button type="button" class="btn primary-colour">Submit</button>
+										<form action="mailto:jdmoallem@gmail.com" method="post" enctype="text/plain">
+										    <input type="text" class="form-control" placeholder="name" name="name">
+										    <input type="text" class="form-control" placeholder="email" name="email">
+										    <textarea class="form-control md-textarea" rows="3" placeholder="message" name="message"></textarea>
+										    <br>
+										    <input type="submit" value="Submit" class="btn primary-colour">
+										</form>
 									</div>
 								</div>
 							</div>
