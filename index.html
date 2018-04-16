@@ -427,10 +427,13 @@
 									<h4 class="text-center">Send me a message or...</h4>
 									<br>
 									<div class="md-form">
-										<form action="mailto:jdmoallem@gmail.com" method="post" enctype="text/plain">
+										<form action="https://formspree.io/jdmoallem@gmail.com" method="POST">
+											<input type="hidden" name="_subject" value="Message from j-mo63.github.io" />
+											<input type="hidden" name="_next" value="https://j-mo63.github.io" />
 										    <input type="text" class="form-control" placeholder="name" name="name">
-										    <input type="text" class="form-control" placeholder="email" name="email">
+										    <input type="email" class="form-control" placeholder="email" name="_replyto">
 										    <textarea class="form-control md-textarea" rows="3" placeholder="message" name="message"></textarea>
+										    <input type="text" name="_gotcha" style="display:none" />
 										    <br>
 										    <input type="submit" value="Submit" class="btn primary-colour">
 										</form>
