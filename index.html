@@ -13,6 +13,14 @@
 		<!-- Custom stuff -->
 		<link rel="stylesheet" href="style.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script>
+			function mutateElement(elementName, content, iconName, link) {
+				let element = document.getElementById(elementName);
+				element.innerHTML = '<i class="fa fa-' + iconName + ' mr-2"></i> ' + content;
+				element.href = link;
+				element.onclick = null;
+			}
+		</script>
 		<title>Jonathan Moallem</title>
 	</head>
 	<body id="top">
@@ -36,10 +44,10 @@
 								<h5>
 									<ul class="invisible-list">
 										<li>
-											<a href="tel:+61450500490"><i class="fa fa-phone mr-2"></i> 0450 500 490</a>
+											<a id="phoneNumber" onClick="mutateElement('phoneNumber', '0450 500 490', 'phone', 'tel:+61450500490'); return false;"><i class="fa fa-phone mr-2"></i> Click to view</a>
 										</li>
 										<li>
-											<a href="mailto:jdmoallem@gmail.com"><i class="fa fa-envelope mr-2"></i> jdmoallem@gmail.com</a>
+											<a id="emailAddress" onClick="mutateElement('emailAddress', 'jdmoallem@gmail.com', 'envelope', 'mailto:jdmoallem@gmail.com'); return false;"><i class="fa fa-envelope mr-2"></i> Click to view</a>
 										</li>
 										<li>
 											<a href="https://www.linkedin.com/in/jmo63/" target="_blank"><i class="fa fa-linkedin mr-2"></i> linkedin.com/in/jmo63</a>
