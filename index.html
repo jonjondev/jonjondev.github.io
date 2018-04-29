@@ -14,6 +14,12 @@
 		<link rel="stylesheet" href="style.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script>
+			function getEmail() {
+				let email = 'gmail.com';
+				email = ('jdmoallem' + '@' + email);
+				return email;
+			}
+
 			function mutateElement(elementName, content, iconName, link) {
 				let element = document.getElementById(elementName);
 				element.innerHTML = '<i class="fa fa-' + iconName + ' mr-2"></i> ' + content;
@@ -44,10 +50,10 @@
 								<h5>
 									<ul class="invisible-list">
 										<li>
-											<a id="phoneNumber" onClick="mutateElement('phoneNumber', ' 0450 500 490', 'phone', 'tel:+61450500490'); return false;"><i class="fa fa-phone mr-2"></i>  Click to view</a>
+											<a id="phoneNumber" onClick="mutateElement('phoneNumber', '  0450 500 490', 'phone', 'tel:+61450500490'); return false;"><i class="fa fa-phone mr-2"></i> &nbsp;Click to view</a>
 										</li>
 										<li>
-											<a id="emailAddress" onClick="mutateElement('emailAddress', 'jdmoallem@gmail.com', 'envelope', 'mailto:jdmoallem@gmail.com'); return false;"><i class="fa fa-envelope mr-2"></i> Click to view</a>
+											<a id="emailAddress" onClick="mutateElement('emailAddress', getEmail(), 'envelope', 'mailto:jdmoallem@gmail.com'); return false;"><i class="fa fa-envelope mr-2"></i> Click to view</a>
 										</li>
 										<li>
 											<a href="https://www.linkedin.com/in/jmo63/" target="_blank"><i class="fa fa-linkedin mr-2"></i> linkedin.com/in/jmo63</a>
@@ -467,7 +473,7 @@
 											<button type="button" class="btn accent-colour btn-full-width linkedin-colour" onclick="window.open('https://www.linkedin.com/in/jmo63/', '_blank')"><i class="fa fa-linkedin mr-2"></i> LinkedIn</button>
 										</div>
 										<div class="col-md-6">
-											<button type="button" class="btn accent-colour btn-full-width gmail-colour" onclick="window.location = 'mailto:jdmoallem@gmail.com'"><i class="fa fa-envelope mr-2"></i> Email</button>
+											<button type="button" class="btn accent-colour btn-full-width gmail-colour" onclick="window.location = 'mailto:' + getEmail()"><i class="fa fa-envelope mr-2"></i> Email</button>
 										</div>
 									</div>
 									<br>
