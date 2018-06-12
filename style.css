@@ -64,6 +64,7 @@ body {
 .img-rounder {
 	border-radius: 5%;
 	overflow: hidden;
+	margin-top: 5px;
 }
 
 .img-rounder-circle {
@@ -102,6 +103,10 @@ body {
 
 a {
 	color: white;
+}
+
+.black-bordered {
+	border: 0.5px solid black;
 }
 
 a:hover {
