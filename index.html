@@ -1,653 +1,397 @@
 <html>
 	<head>
-		<!-- Bootstrap stuff -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-		<!-- mdBootstrap stuff -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/css/mdb.min.css" />
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/js/mdb.min.js"></script>
-		<!-- Font Awesome stuff -->
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-		<!-- Favicon stuff -->
+		<title>Jonathan Moallem's Games Portfolio</title>
+		<link rel="stylesheet" href="styles.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="preload" as="font" href="./fonts/ralewayregular.woff2" type="font/woff2" crossorigin="anonymous">
+		<link rel="preload" as="font" href="./fonts/ralewaybold.woff2" type="font/woff2" crossorigin="anonymous">
+		<link rel="preload" as="font" href="./fonts/ralewaylight.woff2" type="font/woff2" crossorigin="anonymous">
+		<link href="./fontawesome/css/all.css" rel="stylesheet">
 		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
 		<link rel="icon" href="./favicon.ico" type="image/x-icon">
-		<!-- Custom stuff -->
-		<link rel="stylesheet" href="style.css" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script>
-			function getEmail() {
-				let email = 'gmail.com';
+			function openEmail() {
+				let email = 'icloud.com';
 				email = ('jdmoallem' + '@' + email);
-				return email;
+				window.location.href = 'mailto:' + email;
 			}
 
-			function mutateElement(elementName, content, iconName, link) {
+			function mutateElement(elementName, content, link, icon) {
 				let element = document.getElementById(elementName);
-				element.innerHTML = '<i class="fa fa-' + iconName + ' mr-2"></i> ' + content;
+				element.innerHTML = icon ? '<i class="fas ' + icon + '"></i> ' + content : content;
 				element.href = link;
 				element.onclick = null;
 			}
+
+			function toggleMore(button, section) {
+				let moreProjectsButton = document.getElementById(button);
+				let moreProjects = document.getElementById(section);
+				if (moreProjects.style.display === "none") {
+					moreProjects.style.display = "inline";
+					moreProjectsButton.innerHTML = "See Fewer Projects"
+				}
+				else {
+					moreProjects.style.display = "none";
+					moreProjectsButton.innerHTML = "See More Projects"
+				}
+			}
+
+			document.addEventListener('DOMContentLoaded', function (event) {
+			  	toggleMore('more-games-button', 'more-games');
+			  	toggleMore('more-software-button', 'more-software');
+			});
 		</script>
-		<title>Jonathan Moallem</title>
 	</head>
-	<body id="top">
-		<div class="back-to-top-box accent-colour shadow white-text text-center">
-			<a href="#top">
-				<h3 class="back-to-top-box-inner">
-					<i class="fa fa-arrow-up"></i>
-				</h3>
-			</a>
+	<body>
+		<div class="head-section">
+			<div class="head-section-items">
+				<div class="pre-head-section">
+					<div class="head-section-left">
+						<p class="intro-text">Hello.</p>
+					</div>
+				</div>
+				<div class="head-section-image">
+					<img class="headshot" src="./profile_image.jpg">
+				</div>
+				<div class="head-section-container">
+					<div class="head-section-left">
+						<p class="intro-text">I'm <b>Jonathan Moallem</b>, a games developer, software engineer, and researcher who loves to create unique, interactive experiences.</p>
+					</div>
+					<div class="head-section-right">
+						<img class="headshot" src="./profile_image.jpg">
+					</div>
+				</div>
+				<div class="post-head-section">
+					<p>read more below</p>
+					<p class="bottom-arrow"><i class="fas fa-arrow-circle-down"></i></p>
+				</div>
+			</div>
 		</div>
-		<div class="header-background section"></div>
-		<div class="container-fluid">
-			<div class="row negative-margin-top">
-				<div class="offset-md-2 col-md-8">
-					<div class="card primary-colour white-text inner-padding-md">
-						<div class="row">
-							<div class="col-md-8">
-								<h1>Jonathan Moallem</h1>
-								<h4>Software Developer &amp; Designer</h4>
-								<br>
-								<h5>
-									<ul class="invisible-list">
-										<li>
-											<a id="phoneNumber" onClick="mutateElement('phoneNumber', '  0450 500 490', 'phone', 'tel:+61450500490'); return false;"><i class="fa fa-phone mr-2"></i>&nbsp;Click to view</a>
-										</li>
-										<li>
-											<a id="emailAddress" onClick="mutateElement('emailAddress', getEmail(), 'envelope', 'mailto:jdmoallem@gmail.com'); return false;"><i class="fa fa-envelope mr-2"></i>&nbsp;Click to view</a>
-										</li>
-										<li>
-											<a href="https://www.linkedin.com/in/jmo63/" target="_blank"><i class="fab fa-linkedin mr-2"></i> linkedin.com/in/jmo63</a>
-										</li>
-										<li>
-											<a href="https://github.com/J-Mo63" target="_blank"><i class="fab fa-github mr-2"></i> github.com/J-Mo63</a>
-										</li>
-									</ul>
-								</h5>
+		<div class="section">
+			<p class="section-heading">More About Me</p>
+			<p class="section-body">
+				Based in <mark>Sydney, Australia</mark>, I am a recent <mark>graduate of an honours degree by research</mark> at UTS, having written my <mark>thesis on interactive drama systems</mark> in video games. I was particularly interested in building games that lean into emergent properties to provide players with dramatically interesting gameplay. As a result, my work was <mark>published at the IEEE Conference on Games (CoG) 2020</mark> for a paper titled "A Review of Agency Architectures in Interactive Drama Systems".
+				<br><br>
+				Previously I had graduated from the <mark>University of Technology Sydney</mark>, with a Distinction in <mark>BSc. Information Technology</mark>, majoring in enterprise systems development and particularly focusing on <mark>web/mobile apps development as well as interaction design</mark>. Throughout the course I was afforded the opportunity to build up a broad skillset in various programming languages, frameworks and techniques in software engineering.
+				<br><br>
+				In early 2019 I was also <mark>invited to present a game narrative review paper I had written at GDC</mark>, winning gold for my critical analysis of the game <i>Aviary Attorney</i> as selected by a panel of industry veteran narrative designers. And in 2020 I was named as one of the <mark>Australian Financial Review's (AFR) Top 100 Future Leaders</mark>, a competition that identifies the most promising graduates across multiple disciplines each year.
+				<br><br>
+				I love <mark>programming</mark> and enjoy spending my free time learning new tools and languages, which has provided me with a great deal of flexibility with regard to the kinds of projects I am able to work on, from games, to networking tools, and even analytics. However I also enjoy (and have experience with) a broad range of creative fields, including: <mark>gameplay and narrative design</mark>, <mark>UX&I design</mark>, music production and composition, and video editing.
+				<br><br>
+				If you were to ask me about what gets me out of bed in the morning, I would say it's making cool stuff. At my core, I am a creator, and I love to craft experiences, software, games, and many more amazing things. I've developed a passion for learning in service of creation, so if I'm not working hard on one of my projects, I'm likely at a game jam, learning a new skill, or off hiking somewhere.
+				<br><br>
+				<a target="_blank" href="./documents/Jonathan Moallem - Resume.pdf">Download R&#233;sum&#233;</a>
+				<br><br>
+				<span class="contact-link-wrapper">
+					<a id="emailAddress" onClick="mutateElement('emailAddress', 'jdmoallem@icloud.com', 'mailto:jdmoallem@icloud.com', 'fa-envelope'); return false;" class="contact-link" target="_blank" href="">
+						<i class="fas fa-envelope"></i>&nbsp;Email
+					</a>
+				</span>
+				<span class="contact-link-wrapper">
+					<a id="phoneNumber" onClick="mutateElement('phoneNumber', '(+61) 450 500 490', 'tel:+61450500490', 'fa-phone'); return false;" class="contact-link" target="_blank" href="">
+						<i class="fas fa-phone"></i>&nbsp;Mobile
+					</a>
+				</span>
+				<span class="contact-link-wrapper">
+					<a class="contact-link" target="_blank" href="https://www.linkedin.com/in/jmo63/">
+						<i class="fab fa-linkedin-in"></i>&nbsp;LinkedIn
+					</a>
+				</span>
+				<span class="contact-link-wrapper">
+					<a class="contact-link" target="_blank" href="https://github.com/J-Mo63">
+						<i class="fab fa-github"></i>&nbsp;GitHub
+					</a>
+				</span>
+				<span class="contact-link-wrapper">
+					<a class="contact-link" target="_blank" href="https://twitter.com/JonJonRespawned">
+						<i class="fab fa-twitter"></i>&nbsp;Twitter
+					</a>
+				</span>
+				<span class="contact-link-wrapper">
+					<a class="contact-link" target="_blank" href="https://j-mo63.itch.io">
+						<i class="fab fa-itch-io"></i>&nbsp;itch.io
+					</a>
+				</span>
+			</p>
+		</div>
+		<div class="section">
+			<p class="section-heading">My Skills</p>
+			<ul class="section-list">
+				<li><b>Languages: </b>C++, C#, C, Lua, GDScript, Python, Java, Ruby, Crystal, Swift, JavaScript, Dart, PHP</li>
+				<li><b>Engines: </b><a target="_blank" href="https://www.unrealengine.com">Unreal</a>, <a target="_blank" href="https://unity.com">Unity</a>, <a target="_blank" href="https://godotengine.org">Godot</a>, <a target="_blank" href="https://github.com/raysan5/raylib">raylib</a>, <a target="_blank" href="https://love2d.org">L&Ouml;VE 2D</a>, <a target="_blank" href="https://www.renpy.org">Ren'Py</a>, <a target="_blank" href="https://processing.org">Processing 3</a></li>
+				<li><b>Frameworks: </b>Android SDK, iOS SDK, Flutter, Ruby on Rails, Node.js, Django, Sinatra, Java EE, Wordpress, React.js, Jekyll</li>
+				<li><b>Tools: </b>Git, Photoshop, Jira & Trello, Blender, Docker</li>
+				<li><b>Misc: </b>Dialogue Writing, UX&I Design, Music Production, Data Analytics, Video Editing</li>
+			</ul>
+		</div>
+		<div class="section">
+			<p class="section-heading">Games I've Made</p>
+			<div class="section-games">
+				<div class="section-game">
+					<p class="section-game-title">Ozymandias</p>
+					<div class="section-game-container">
+						<img class="section-game-image" src="./game-images/ozymandias.gif">
+						<p class="section-game-text">Created with <mark>Unity engine</mark> as part of a small team, Ozymandias is a <mark>satirical fantasy town-builder CCG</mark> in which the player manages a hub for adventurers throughout the realm. The game features <mark>over 100 unique, hand-written events</mark>, unlockable quests and buildings, as well as an <mark>original soundtrack</mark> that I had created for it. The game was selected for, and <mark>won the UTS Student Games Showcase 2020</mark>.<br><br><a target="_blank" href="https://caps-collective.itch.io/ozymandias">Download & Play</a><br>(Available on Windows, macOS & Linux)<br><br><a target="_blank" href="https://github.com/CapsCollective/ozymandias">View Repository on Github</a></p>
+					</div>
+				</div>
+				<div class="section-game">
+					<p class="section-game-title">Run for Covert</p>
+					<div class="section-game-container">
+						<img class="section-game-image" src="./game-images/rfc.gif">
+						<p class="section-game-text">Developed in <mark>Unreal Engine 4</mark>, the tactical first-person shooter was built by a team of two for a subject in advanced games programming techniques. The game features <mark>HFSM-based enemy AI</mark> that utilise an <mark>intelligent cover system</mark> and fully <mark>procedurally generated levels and terrain</mark>. The game is also built to support <mark>multiplayer online and LAN</mark> for cooperative play.<br><br><a target="_blank" href="https://caps-collective.itch.io/run-for-covert">Download & Play</a><br>(Available on Windows & macOS)<br><br><a target="_blank" href="https://github.com/CapsCollective/run-for-covert">View Repository on Github</a></p>
+					</div>
+				</div>
+				<div class="section-game">
+					<p class="section-game-title">CyberHeist</p>
+					<div class="section-game-container">
+						<img class="section-game-image" src="./game-images/cyberheist.gif">
+						<p class="section-game-text">Developed over a 1 month period in the <mark>Godot engine</mark>, CyberHeist is the first project of my "12 games in 12 months" challenge. Featuring a retro terminal simulation, <mark>funky CRT-monitor shaders and a 3D visualisation</mark>, the game is a product of my interests in programming, 80s and 90s hacker-core sci-fi, and retro nostalgia.<br><br><a target="_blank" href="https://jonathanmoallem.com/cyberheist/">Play In Browser</a><br>(Chrome & Firefox Only)<br><br><a target="_blank" href="https://github.com/J-Mo63/cyberheist">View Repository on Github</a></p>
+					</div>
+				</div>
+				<div class="section-game">
+					<p class="section-game-title">Smack Back</p>
+					<div class="section-game-container">
+						<img class="section-game-image" src="./game-images/smackback.gif">
+						<p class="section-game-text">Created with <mark>Unity engine</mark> as part of a small team, Smack Back is a local-multiplayer game about being a pair of legs in a table-tennis traphouse. The game also includes some vaporwavy original assets as well as an <mark>original soundtrack</mark> that I had created for it.<br><br><a target="_blank" href="https://team-allcaps.itch.io/smack-back">Download & Play</a><br>(Available for Windows & macOS)<br><br><a target="_blank" href="https://soundcloud.com/jailforslubs/sets/smack-back">Listen to Soundtrack on SoundCloud</a><br><br><a target="_blank" href="https://github.com/team-won/smack-back">View Repository on Github</a></p>
+					</div>
+				</div>
+				<div class="section-game">
+					<p class="section-game-title">ALLCAPS</p>
+					<div class="section-game-container">
+						<img class="section-game-image" src="./game-images/ALLCAPS.gif">
+						<p class="section-game-text">Created as part of a 5-hour game jam in <mark>Unity engine</mark>, as part of a team of three, ALLCAPS is mechanical key clicking, keyboard tilting, pinball bouncing fever-dream cross nightmare. It features a haunting industrial 3D environment, as well as fun and addictive gameplay to boot.<br><br><a target="_blank" href="https://github.com/Team-ALLCAPS/ALLCAPS">View Repository on Github</a></p>
+					</div>
+				</div>
+				<div class="section-game">
+					<p class="section-game-title">Emergent Narrative Testbed</p>
+					<div class="section-game-container">
+						<img class="section-game-image" src="./game-images/emergent-testbed.gif">
+						<p class="section-game-text">Developed in <mark>Godot engine</mark> to provide a testbed application to my honours <mark>research into interactive drama systems</mark> titled "Authoring Interactive Drama Games via Agent-Based Drama Managers", it features an emergent environment built using a  <mark>smart objects</mark>, <mark>GOAP-based AI agents </mark> and an <mark>HGOAP drama manager</mark> (hierarchical GOAP).<br><br><a target="_blank" href="https://github.com/J-Mo63/emergent-narrative-testbed">View Repository on Github</a></p>
+					</div>
+				</div>
+				<div id="more-games">
+					<div class="section-game">
+						<p class="section-game-title">Move Fast, Break Faces</p>
+						<div class="section-game-container">
+							<img class="section-game-image" src="./game-images/mfbf.gif">
+							<p class="section-game-text">Developed in <mark>Unity engine</mark> as part of a team for a university subject in games design, "Move Fast, Break Faces" delivers exactly that, with fast-paced goblin-face-splattering in a topdown gameplay style. The game was <mark>selected for the UTS Student Games Showcase</mark>.<br><br><a target="_blank" href="https://github.com/DemonicSoftware/move-fast-break-faces">View Repository on Github</a></p>
+						</div>
+					</div>
+					<div class="section-game">
+						<p class="section-game-title">AI Behaviour Testbed</p>
+						<div class="section-game-container">
+							<img class="section-game-image" src="./game-images/ai-testbed.gif">
+							<p class="section-game-text">Developed in <mark>Godot engine</mark> to provide simple implementation examples, it effectively demonstrates the benefits and limits of different AI <mark>behaviour selection algorithms</mark>. It can hotswap various selection algorithms at runtime including: Finite & Hierarchical Finite State Machines (<mark>FSM & HFSM</mark>), <mark>Behaviour Trees</mark>, Goal-Oriented Action Planning (<mark>GOAP</mark>), and Hierarchical Task Networks (<mark>HTN</mark>) planners.</mark><br><br><a target="_blank" href="https://github.com/J-Mo63/ai-behaviour-testbed">View Repository on Github</a></p>
+						</div>
+					</div>
+					<div class="section-game">
+						<p class="section-game-title">Emergence Testbed</p>
+						<div class="section-game-container">
+							<img class="section-game-image" src="./game-images/emergence.gif">
+							<p class="section-game-text">Built in <mark>Godot engine</mark> as a testbed for research on controlling <mark>emergent properties in a complex system</mark>, the project simulates a small population of "dudes", which appear to work together to build a settlement to avoid certain death. The project also outputs a running transcript of events that can be later analysed for research purposes.<br><br><a target="_blank" href="https://github.com/J-Mo63/emergence-test-bed">View Repository on Github</a></p>
+						</div>
+					</div>
+					<div class="section-game">
+						<p class="section-game-title">Curve Flattener</p>
+						<div class="section-game-container">
+							<img class="section-game-image" src="./game-images/curve_flattener.gif">
+							<p class="section-game-text">Built in <mark>Godot engine</mark>, the game draws on simulations and data modelling for epidemiology in order to demonstrate the place of quarantine and social distancing in combatting outbreaks. Players attempt use these tools in order to quell the outbreak and flatten the curve which is <mark>sharable to social media</mark>.<br><br><a target="_blank" href="https://jonathanmoallem.com/curve-flattener/">Play In Browser</a><br>(Chrome & Firefox Only)<br><br><a target="_blank" href="https://github.com/J-Mo63/curve-flattener">View Repository on Github</a></p>
+						</div>
+					</div>
+					<div class="section-game">
+						<p class="section-game-title">UTS Discover</p>
+						<div class="section-game-container">
+							<div class="game-image-vertical-container">
+								<img class="section-game-image game-image-vertical" src="./game-images/uts_discover.gif">
 							</div>
-							<div class="col-md-4">
-								<div class="img-rounder-circle shadow">
-									<img src="./res/dp.jpeg" class="img-max-width">
-								</div>
-							</div>
+							<p class="section-game-text">Built for the University of Technology Sydney's international marketing team, the app delvers an <mark>alternate reality (AR)</mark> experience using the <mark>Unity engine</mark> alongside the <mark>Vuforia AR library</mark>. It features the ability to display a map of the university campus on an AR marker card, as well as a 360 degree tour of the UTS campus. The game was selected for, and <mark>won the UTS Student Project Showcase</mark>.<br><br><a target="_blank" href="https://testflight.apple.com/join/5DMw7WO9">Join the iOS Beta</a><br><br><a target="_blank" href="https://play.google.com/apps/testing/com.AR4EVA4NOW.UTSDiscover">Join the Android Beta</a><br><br><a target="_blank" href="https://github.com/ar4eva4now/uts-discover">View Repository on Github</a></p>
+						</div>
+					</div>
+					<div class="section-game">
+						<p class="section-game-title">RNG Stronghold</p>
+						<div class="section-game-container">
+							<img class="section-game-image" src="./game-images/rng.gif">
+							<p class="section-game-text">Created as part of another 5-hour game jam, in the <mark>Godot engine</mark> with a team of three. It eventually turned into the second game of my "12 game in 12 months" challenge. The game is heavily inspired by <mark>resource allocation-based board games</mark>, and features a quirky, pixelated art-style for lots of <mark>physics-based dice rolling</mark>.<br><br><a target="_blank" href="https://github.com/Team-ALLCAPS/rng-stronghold">View Repository on Github</a></p>
+						</div>
+					</div>
+					<div class="section-game">
+						<p class="section-game-title">The Innkeeper</p>
+						<div class="section-game-container">
+							<img class="section-game-image" src="./game-images/the_innkeeper.gif">
+							<p class="section-game-text">Created as part of another 5-hour game jam in the <mark>Godot engine</mark> with a team of four. The game sees you, an innkeeper, serve patrons food and drink in a fantasy tavern setting, featuring a fun, cutesy artstyle, with a <mark>minimalist, atmospheric approach to game UI</mark>.<br><br><a target="_blank" href="https://github.com/Team-ALLCAPS/the-innkeeper">View Repository on Github</a></p>
+						</div>
+					</div>
+					<div class="section-game">
+						<p class="section-game-title">Love Lunatic</p>
+						<div class="section-game-container">
+							<img class="section-game-image" src="./game-images/love_lunatic.gif">
+							<p class="section-game-text">This project, built with the <mark>L&Ouml;VE 2D graphics library</mark> using the <mark>Lua scripting language</mark>, was an attempt to create something of a top-down RPG framework/engine. It features a <mark>tile-editor program</mark> that renders scenes with the same system used in gameplay, and includes <mark>event and dialogue systems</mark> which work hand-in-hand with the map-centric authoring tools.<br><br><a target="_blank" href="https://github.com/J-Mo63/love-lunatic">View Repository on Github</a></p>
+						</div>
+					</div>
+					<div class="section-game">
+						<p class="section-game-title">M*A*S*H</p>
+						<div class="section-game-container">
+							<img class="section-game-image" src="./game-images/mash.gif">
+							<p class="section-game-text">Created with <mark>Unity engine</mark> for a class assignment in <mark>agile games development</mark>, the project attempts to recreate the classic Atari 2600 game, M*A*S*H (1983). The original game assets were found or recreated to provide as close of an experience to the original game as possible.<br><br><a target="_blank" href="https://github.com/J-Mo63/mash">View Repository on Github</a></p>
+						</div>
+					</div>
+					<div class="section-game">
+						<p class="section-game-title">Super Mario Bros.</p>
+						<div class="section-game-container">
+							<img class="section-game-image" src="./game-images/mario.gif">
+							<p class="section-game-text">Created with <mark>Unity engine</mark> for a group class assignment in <mark>agile games development</mark>, the project attempts to recreate the classic NES game, Super Mario Bros. (1985). The original game assets were found or recreated to provide as close of an experience to the original game as possible.<br><br><a target="_blank" href="https://github.com/team-won/super-mario-bros">View Repository on Github</a></p>
+						</div>
+					</div>
+					<div class="section-game">
+						<p class="section-game-title">Phantom Notes</p>
+						<div class="section-game-container">
+							<img class="section-game-image" src="./game-images/phantom_notes.png">
+							<p class="section-game-text">Built in <mark>Unity engine</mark>, the game is a 3D, first-person, bullet-hell that attempts to illustrate the truly horrifying experience of being trapped in a haunted jazz club. The game features <mark>procedural music</mark> as played by enemies, and relies on the player's ability to fire notes to the beat. The game <mark>won "best sound design"</mark> in the UTS <mark>audio-first game jam</mark>, sponsored by Dolby.<br><br><a target="_blank" href="https://github.com/CapsCollective/phantom-notes">View Repository on Github</a></p>
+						</div>
+					</div>
+					<div class="section-game">
+						<p class="section-game-title">Pongagon</p>
+						<div class="section-game-container">
+							<img class="section-game-image" src="./game-images/pongagon.png">
+							<p class="section-game-text">A hand-drawn, minimalist mobile game for <mark>Android & iOS</mark> built in the <mark>Unity engine</mark> about "keeping the pong inside the gon", essentially being a single player game of the classic arcade game, Pong. To date it has accrued over <mark>20 thousand downloads on the AppStore</mark> alone. <i>"Like Skyrim with Gons" - Not Polygon</i><br><br><a target="_blank" href="https://sudo-code.com/pongagon.html">Download on Android & iOS</a></p>
+						</div>
+					</div>
+					<div class="section-game">
+						<p class="section-game-title">BubbleTime</p>
+						<div class="section-game-container">
+							<img class="section-game-image" src="./game-images/bubbletime.png">
+							<p class="section-game-text">Developed for <mark>iOS devices</mark> using the <mark>Swift programming language</mark> for a university subject in iOS app development, the game <mark>uses the phone's gyroscope</mark> for bubble-popping action.</mark><br><br><a target="_blank" href="https://apps.apple.com/au/app/bubbletime/id1404117360">Download on iOS</a><br><br><a target="_blank" href="https://github.com/J-Mo63/bubbletime">View Repository on Github</a></p>
+						</div>
+					</div>
+					<div class="section-game">
+						<p class="section-game-title">BirdBrains</p>
+						<div class="section-game-container">
+							<img class="section-game-image" src="./game-images/birdbrains.png">
+							<p class="section-game-text">Developed using <mark>Processing 3 and Java</mark> for a university subject in interactive media, the experience <mark>pulls realtime data from Twitter</mark> to deliver a turn-based interactive experience about how Twitter was used through the 2016 US election for social engineering based gameplay. The project was <mark>selected for the UTS Student Major Works Expo</mark>.<br><br><a target="_blank" href="https://github.com/TeamBoxCat/BirdBrains">View Repository on Github</a></p>
+						</div>
+					</div>
+					<div class="section-game">
+						<p class="section-game-title">The Gumption Fables</p>
+						<div class="section-game-container">
+							<img class="section-game-image" src="./game-images/bog.png">
+							<p class="section-game-text">Developed in the <mark>Ren'Py visual novel engine and modified in Python</mark>, the game was made as part of my <mark>high school Software Design & Development course major work</mark>. The engine's functionality was modified to accomodate for <mark>point & click gameplay</mark> and features an original story with properly bizarre puzzles and absurdist dialogue.<br><br><a target="_blank" href="https://github.com/J-Mo63/gumption-fables">View Repository on Github</a></p>
+						</div>
+					</div>
+					<div class="section-game">
+						<p class="section-game-title">Signature Keys</p>
+						<div class="section-game-container">
+							<img class="section-game-image" src="./game-images/signature_keys.png">
+							<p class="section-game-text">Built for <mark>iOS devices</mark> using the <mark>Swift programming language</mark> for a university subject in iOS app development, the game <mark>takes advantage of a number of Apple's libraries</mark>, as well as <mark>Firebase, and AudioKit</mark> to teach players simple piano progressions with fun, rewarding gameplay, and online leaderboards.</mark><br><br><a target="_blank" href="https://github.com/BlinkingLightStudios/tunetilt">View Repository on Github</a></p>
+						</div>
+					</div>
+					<div class="section-game">
+						<p class="section-game-title">Sunk</p>
+						<div class="section-game-container">
+							<img class="section-game-image" src="./game-images/sunk.png">
+							<p class="section-game-text">Developed for <mark>iOS and Android</mark> devices in the <mark>Unity engine</mark>, the game features a minimalist, two player game of pool for touch devices with unrealistically realistic ball physics and gripping snooker-esque gameplay.<br><br><a target="_blank" href="https://github.com/SudoCodeSoftware/sunk">View Repository on Github</a></p>
+						</div>
+					</div>
+
+					<div class="section-game">
+						<p class="section-game-title">CodeSprint</p>
+						<div class="section-game-container">
+							<img class="section-game-image" src="./game-images/codesprint.png">
+							<p class="section-game-text">Created using the <mark>Android SDK with Java</mark>, CodeSprint is a multiplayer coding trivia platform for Android that helps users learn to program through coding challenges made to be done fast. The game includes social features for competing with friends on daily challenges, and utilises <mark>Firebase for auth and leaderboard tracking</mark>.<br><br><a target="_blank" href="https://github.com/J-Mo63/code-sprint">View Repository on Github</a></p>
 						</div>
 					</div>
 				</div>
-			</div>
-			<br>
-			<br>
-			<br>
-			<div class="row">
-				<div class="offset-md-2 col-md-8">
-					<div class="card inner-padding-sm">
-						<div class="container">
-							<p class="text-center">If you were to ask me about what gets me out of bed in the morning, I would say it’s creation.</p>
-							<p class="text-center">At my core, I am a creator, and I love to craft experiences, software, games, products, and many more amazing things. I also have a great passion for learning - especially when I can apply it to my craft.</p>
-							<hr>
-							<div class="text-center">
-								<button type="button" class="btn accent-colour" onclick="location.href='#my-story'">My Story <i class="fa fa-book ml-2"></i></button>
-								<button type="button" class="btn accent-colour" onclick="location.href='#portfolio'">Portfolio <i class="fa fa-folder-open ml-2"></i></button>
-								<button type="button" class="btn accent-colour" onclick="location.href='#contact-me'">Contact Me <i class="fa fa-envelope ml-2"></i></button>
-								<button type="button" class="btn primary-colour" onclick="window.open('https://www.dropbox.com/s/b4nqpxigjai1tji/Jonathan%20Moallem%20-%20Resume.pdf?dl=0', '_blank')">Download Resume <i class="fa fa-download ml-2"></i></a></button>
-							</div>
-						</div>
-					</div>
+				<div class="centered-container">
+					<button id="more-games-button" onclick="toggleMore('more-games-button', 'more-games')"></button>
 				</div>
 			</div>
-			<br>
-			<div class="row" id="my-story">
-				<div class="offset-md-2 col-md-8">
-						<br>
-						<hr>
-						<br>
-						<h1 class="text-center"><i class="fa fa-book text-accent-colour mr-2"></i> My Story</h1>
-						<br>
-						<div class="card horizontal-padding-sm grey-colour">
-						<div class="row">
-							<div class="col-sm-6 timeline-right">
-								<br>
-								<div class="card">
-									<div class="card-header primary-colour lighten-1 white-text"><a href="https://sudocodesoftware.github.io/" target="_blank"><i class="fa fa-building mr-2"></i> Sudo-Code Software</a></div>
-									<div class="inner-padding-md">
-										<h4 class="card-title">Technical Designer &amp; Co-Founder</h4>
-								        <p class="card-text">I registered a partnership named Sudo-Code Software and began working on commercial projects as its <b>accounts manager</b>, <b>project manager</b>, <b>designer</b>, and <b>developer</b>.</p>
-								        <div class="row breakpoint-mobile-hide">
-								        	<div class="col-sm-3">
-								        		<div class="img-rounder">
-													<a href="https://sudocodesoftware.github.io" target="_blank">
-														<img src="./res/project-images/sudologo.png" class="img-max-width">
-													</a>
-												</div>
-								        	</div>
-								        	<div class="col-sm-3">
-								        		<div class="img-rounder">
-								        			<a href="https://sudocodesoftware.github.io/pongagon.html" target="_blank">
-														<img src="./res/project-images/pong.png" class="img-max-width">
-													</a>
-												</div>
-								        	</div>
-								        	<div class="col-sm-3">
-								        		<div class="img-rounder">
-								        			<a href="#" target="_blank">
-														<img src="./res/project-images/fwd.png" class="img-max-width">
-													</a>
-												</div>
-								        	</div>
-								        </div>
-								    </div>
-								</div>
-								<br>
-							</div>
-							<div class="col-sm-6 breakpoint-mobile-hide">
-								<br>
-								<h4 class="text-accent-colour"><i class="fa fa-caret-left mr-2"></i> 2014</h4>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6 breakpoint-mobile-hide timeline-right">
-								<br>
-								<h4 class="text-accent-colour pull-right">2015 <i class="fas fa-caret-right ml-2"></i></h4>
-							</div>
-							<div class="col-sm-6">
-								<br>
-								<div class="card">
-									<div class="card-header primary-colour lighten-1 white-text"><a href="http://www.emanuelschool.nsw.edu.au" target="_blank"><i class="fa fa-graduation-cap mr-2"></i> Emanuel School</a></div>
-									<div class="inner-padding-md">
-										<h4 class="card-title">High School Certificate</h4>
-								        <p class="card-text">I finished the HSC studying <b>software development &amp; design</b>, <b>economics</b>, and <b>live entertainment</b>.</p>
-								        <div class="row breakpoint-mobile-hide">
-								        	<div class="col-sm-3">
-								        		<div class="img-rounder">
-													<a href="https://github.com/J-Mo63/gumption-fables" target="_blank">
-														<img src="./res/project-images/gumption.png" class="img-max-width">
-													</a>
-												</div>
-								        	</div>
-								        </div>
-								    </div>
-								</div>
-								<br>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6 timeline-right">
-								<br>
-								<div class="card">
-									<div class="card-header primary-colour lighten-1 white-text"><a href="https://www.interactiveinvestor.com.au" target="_blank"><i class="fab fa-wordpress mr-2"></i> Interactive Investor</a></div>
-									<div class="inner-padding-md">
-										<h4 class="card-title">Junior Web Developer</h4>
-								        <p class="card-text">I worked under the company's lead web developer on a casual basis, assisting with the production of <b>WordPress</b> sites for listed corporates like <b>Telstra</b> and <b>Westfield</b>.</p>
-								        <div class="row breakpoint-mobile-hide">
-								        	<div class="col-sm-3">
-								        		<div class="img-rounder">
-													<a href="https://telstra2015ar.interactiveinvestorreports.com" target="_blank">
-														<img src="./res/project-images/telstra.png" class="img-max-width">
-													</a>
-												</div>
-								        	</div>
-								        	<div class="col-sm-3">
-								        		<div class="img-rounder">
-													<a href="https://westfield2016sr.interactiveinvestor.com.au" target="_blank">
-														<img src="./res/project-images/westfield.png" class="img-max-width">
-													</a>
-												</div>
-								        	</div>
-								        </div>
-								    </div>
-								</div>
-								<br>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6 breakpoint-mobile-hide timeline-right">
-								<br>
-								<h4 class="text-accent-colour pull-right">2016 <i class="fas fa-caret-right ml-2"></i></h4>
-							</div>
-							<div class="col-sm-6">
-								<br>
-								<div class="card">
-									<div class="card-header primary-colour lighten-1 white-text"><a href="https://www.uts.edu.au" target="_blank"><i class="fa fa-graduation-cap mr-2"></i> University of Technology Sydney</a></div>
-									<div class="inner-padding-md">
-										<h4 class="card-title">B. Science in Information Technology</h4>
-								        <p class="card-text">I began the degree studying an <b>enterprise software</b> major with a focus on <b>video games</b>, but eventually shifted to a focus on <b>web &amp; mobile applications</b> development.</p>
-								        <div class="row breakpoint-mobile-hide">
-								        	<div class="col-sm-3">
-								        		<div class="img-rounder">
-													<a href="http://soundstream-app.com" target="_blank">
-														<img src="./res/project-images/soundstream.png" class="img-max-width">
-													</a>
-												</div>
-								        	</div>
-								        	<div class="col-sm-3">
-								        		<div class="img-rounder">
-													<a href="https://github.com/J-Mo63/code-sprint" target="_blank">
-														<img src="./res/project-images/codesprint.png" class="img-max-width">
-													</a>
-												</div>
-								        	</div>
-								        	<div class="col-sm-3">
-								        		<div class="img-rounder">
-													<a href="https://github.com/TeamBoxCat/BirdBrains" target="_blank">
-														<img src="./res/project-images/birdbrains.png" class="img-max-width">
-													</a>
-												</div>
-								        	</div>
-								        	<div class="col-sm-3">
-								        		<div class="img-rounder">
-													<a href="https://github.com/DemonicSoftware/move-fast-break-faces" target="_blank">
-														<img src="./res/project-images/movefastbreakfaces.png" class="img-max-width">
-													</a>
-												</div>
-								        	</div>
-								        	<div class="col-sm-3">
-								        		<div class="img-rounder">
-													<a href="https://itunes.apple.com/au/app/bubbletime/id1404117360" target="_blank">
-														<img src="./res/project-images/bubbletime.png" class="img-max-width">
-													</a>
-												</div>
-								        	</div>
-								        	<div class="col-sm-3">
-								        		<div class="img-rounder">
-													<a href="https://github.com/BlinkingLightStudios/signature-keys" target="_blank">
-														<img src="./res/project-images/signaturekeys.png" class="img-max-width">
-													</a>
-												</div>
-								        	</div>
-								        	<div class="col-sm-3">
-								        		<div class="img-rounder">
-													<a href="https://github.com/TheCornflowerAssociation/textbooks-with-friends" target="_blank">
-														<img src="./res/project-images/textbookswithfriends.png" class="img-max-width">
-													</a>
-												</div>
-								        	</div>
-								        	<div class="col-sm-3">
-								        		<div class="img-rounder">
-													<a href="https://github.com/ar4eva4now/uts-discover" target="_blank">
-														<img src="./res/project-images/utsdiscover.png" class="img-max-width">
-													</a>
-												</div>
-								        	</div>
-								        </div>
-								    </div>
-								</div>
-								<br>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6 timeline-right">
-								<br>
-								<div class="card">
-									<div class="card-header primary-colour lighten-1 white-text"><a href="http://www.aepi.org.au" target="_blank"><i class="fa fa-gavel mr-2"></i> Alpha Epsilon Pi Sydney</a></div>
-									<div class="inner-padding-md">
-										<h4 class="card-title">President & Co-Founder</h4>
-								        <p class="card-text">I helped to build up Australia's first fraternity, taking on the portfolios of <b>social media management</b>, <b>membership coordination</b>, <b>communal relations</b>, and <b>strategic vision development</b>. I have had the organisation run a number of professional development events, including <b>hackathons</b>.</p>
-								        <div class="row breakpoint-mobile-hide">
-								        	<div class="col-sm-3">
-								        		<div class="img-rounder">
-													<a href="http://www.aepi.org.au" target="_blank">
-														<img src="./res/project-images/aepi.png" class="img-max-width">
-													</a>
-												</div>
-								        	</div>
-								        	<div class="col-sm-3">
-								        		<div class="img-rounder">
-													<a href="https://github.com/naggr" target="_blank">
-														<img src="./res/project-images/naggr.png" class="img-max-width">
-													</a>
-												</div>
-								        	</div>
-								        	<div class="col-sm-3">
-								        		<div class="img-rounder">
-													<a href="https://github.com/movieknight" target="_blank">
-														<img src="./res/project-images/movieknight.png" class="img-max-width">
-													</a>
-												</div>
-								        	</div>
-								        </div>
-								    </div>
-								</div>
-								<br>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6 breakpoint-mobile-hide timeline-right">
-								<br>
-								<h4 class="text-accent-colour pull-right">2017 <i class="fas fa-caret-right ml-2"></i></h4>
-							</div>
-							<div class="col-sm-6">
-								<br>
-								<div class="card">
-									<div class="card-header primary-colour lighten-1 white-text"><a href="http://www.sentia.com.au" target="_blank"><i class="fas fa-gem mr-2"></i> Sentia</a></div>
-									<div class="inner-padding-md">
-										<h4 class="card-title">Junior Rails Developer</h4>
-								        <p class="card-text">I worked alongside veteran Rails developers, and was given client work on backend in <b>Ruby on Rails</b>, frontend in <b>Node.js &amp; React</b>, and <b>UX &amp; UI design</b>.</p>
-								        <div class="row breakpoint-mobile-hide">
-								        	<div class="col-sm-3">
-								        		<div class="img-rounder">
-													<a href="https://www.lodex.co" target="_blank">
-														<img src="./res/project-images/lodex.png" class="img-max-width">
-													</a>
-												</div>
-								        	</div>
-								        	<div class="col-sm-3">
-								        		<div class="img-rounder">
-													<a href="https://www.carepilot.com.au" target="_blank">
-														<img src="./res/project-images/carepilot.png" class="img-max-width">
-													</a>
-												</div>
-								        	</div>
-								        	<div class="col-sm-3">
-								        		<div class="img-rounder">
-													<a href="https://tickedoff.net" target="_blank">
-														<img src="./res/project-images/tickedoff.png" class="img-max-width">
-													</a>
-												</div>
-								        	</div>
-								        </div>
-								    </div>
-								</div>
-								<br>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6 timeline-right">
-								<br>
-								<div class="card">
-									<div class="card-header primary-colour lighten-1 white-text"><a href="https://www.foreignbrief.com" target="_blank"><i class="fab fa-android mr-2"></i> Foreign Brief</a></div>
-									<div class="inner-padding-md">
-										<h4 class="card-title">Lead Android Developer</h4>
-								        <p class="card-text">I was hired by the startup to develop the <b>Android</b> version for their world news app, <b>The Daily Brief</b>.</p>
-								        <div class="row breakpoint-mobile-hide">
-								        	<div class="col-sm-3">
-								        		<div class="img-rounder">
-													<a href="https://play.google.com/store/apps/details?id=com.foreign_brief.daily_brief" target="_blank">
-														<img src="./res/project-images/dailybrief.png" class="img-max-width">
-													</a>
-												</div>
-								        	</div>
-								        </div>
-								    </div>
-								</div>
-								<br>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6 breakpoint-mobile-hide timeline-right">
-								<br>
-								<h4 class="text-accent-colour pull-right">2018 <i class="fas fa-caret-right ml-2"></i></h4>
-							</div>
-							<div class="col-sm-6">
-								<br>
-								<div class="card">
-									<div class="card-header primary-colour lighten-1 white-text"><a href="https://www.uts.edu.au/current-students/support/upass/upass" target="_blank"><i class="fas fa-pencil-alt mr-2"></i> U:PASS UTS</a></div>
-									<div class="inner-padding-md">
-										<h4 class="card-title">Programming Tutor</h4>
-								        <p class="card-text">I was selected as the sole U:PASS tutor for <b>Applications Programming</b>, a <b>Java</b> subject that introduces students to <b>object-oriented programming</b>, <b>MVC architecture</b>, and more.</p>
-								        <div class="row breakpoint-mobile-hide">
-								        	<div class="col-sm-3">
-								        		<div class="img-rounder black-bordered">
-													<a href="https://github.com/J-Mo63/javafx-pokedex" target="_blank">
-														<img src="./res/project-images/pokedex.png" class="img-max-width">
-													</a>
-												</div>
-								        	</div>
-								        </div>
-								    </div>
-								</div>
-								<br>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6 timeline-right">
-								<br>
-								<div class="card">
-									<div class="card-header primary-colour lighten-1 white-text"><a href="https://www2.gmu.edu/" target="_blank"><i class="fa fa-graduation-cap mr-2"></i> George Mason University</a></div>
-									<div class="inner-padding-md">
-										<h4 class="card-title">Computer Science Major (Academic Exchange)</h4>
-								        <p class="card-text">I went on academic exchange to the United States, in Virginia. There I studied <b>Web Systems Development in PHP</b>, Acting, Playwriting, and <b>Narrative Design for Video Games</b>.</p>
-								        <p class="card-text">My work there resulted in recieving the <b>Game Narrative Review Gold Award</b> from GDC (the international game devepers conference), to which I was flown out from Sydney to present my work at.</p>
-								    </div>
-								</div>
-								<br>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6 breakpoint-mobile-hide timeline-right">
-								<br>
-								<h4 class="text-accent-colour pull-right">2019 <i class="fas fa-caret-right ml-2"></i></h4>
-							</div>
-							<div class="col-sm-6">
-								<br>
-								<div class="card">
-									<div class="card-header primary-colour lighten-1 white-text"><a href="https://tswf.blog/" target="_blank"><i class="fas fa-handshake mr-2"></i> The Susan Wakil Fellowship</a></div>
-									<div class="inner-padding-md">
-										<h4 class="card-title">Fellow</h4>
-								        <p class="card-text">I was selected to be one of the 2019 cohort by the directors of the program. The <b>student political leadership program</b> provides students with the training in <b>politics</b>, <b>networking</b>, and <b>project managment</b>.</p>
-								        <p class="card-text">Fellows are required to build out <b>social impact projects</b> in an area of interest, while being provided with <b>project funding</b>, <b>personalised mentorship</b>, and <b>political tours of DC and New York</b>.</p>
-								        <!-- <div class="row breakpoint-mobile-hide">
-								        	<div class="col-sm-3">
-								        		<div class="img-rounder black-bordered">
-													<a href="https://github.com/J-Mo63/javafx-pokedex" target="_blank">
-														<img src="./res/project-images/pokedex.png" class="img-max-width">
-													</a>
-												</div>
-								        	</div>
-								        </div> -->
-								    </div>
-								</div>
-								<br>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6 timeline-right">
-								<br>
-								<div class="card">
-									<div class="card-header primary-colour lighten-1 white-text"><a href="https://www2.gmu.edu/" target="_blank"><i class="fa fa-graduation-cap mr-2"></i> University of Technology Sydney</a></div>
-									<div class="inner-padding-md">
-										<h4 class="card-title">B. Science (Honours) in Information Technology</h4>
-								        <p class="card-text">I was accepted into the (standalone) honours program at UTS to write a <b>thesis paper</b> on the topic of <b>interactive drama systems</b> in games design.</p>
-								    </div>
-								</div>
-								<br>
-							</div>
-						</div>
+		</div>
+		<div class="section">
+			<p class="section-heading">Software I've Made</p>
+			<div class="section-games">
+				<ul class="section-list">
+					<li>
+						<b>The Daily Brief: </b>A commercial <mark>Android app</mark> I built for strategic news site, <a target="_blank" href="https://www.foreignbrief.com">Foreign Brief</a>, featuring a daily feed and subscription features, including tags, search, and map-view.
+						<div class="half-break"></div>
+						<a target="_blank" href="https://play.google.com/store/apps/details?id=com.foreign_brief.daily_brief">Download App</a>
+					</li>
+					<li>
+						<b>Frost Crystal: </b>A barebones, <mark>open source, modular API</mark> for the <mark>Crystal language</mark> for super light-weight deployments in <mark>Docker</mark>... and it's super cool.
+						<div class="half-break"></div>
+						<a target="_blank" href="https://github.com/J-Mo63/frost-crystal">View Repository on GitHub</a>
+					</li>
+					<li>
+						<b>Raylib C++ Starter: </b>A template <mark>Make project</mark> for the <a target="_blank" href="https://github.com/raysan5/raylib">raylib</a> library to automatcially generate dependencies and setup <mark>separate compilation with static libs and C++ bindings</mark>.
+						<div class="half-break"></div>
+						<a target="_blank" href="https://github.com/CapsCollective/raylib-cpp-starter">View Repository on GitHub</a>
+					</li>
+					<li>
+						<b>Contact Register: </b>A CLI application in <mark>Python</mark> for managing contact lists across multiple formats, including text, HTML, CSV, and JSON.
+						<div class="half-break"></div>
+						<a target="_blank" href="https://github.com/J-Mo63/contact-register">View Repository on GitHub</a>
+					</li>
+					<div id="more-software">
+						<li>
+							<b>MyWay Sinatra: </b>An <mark>open source project</mark> for a barebones <mark>Ruby Sinatra</mark> framework with modular boilerplates for <mark>both API and web-app</mark> usage... and it's super suave.
+							<div class="half-break"></div>
+							<a target="_blank" href="https://github.com/J-Mo63/myway-sinatra">View Repository on GitHub</a>
+						</li>
+						<li>
+							<b>AEPi Australia Site: </b>A <mark>Ruby on Rails</mark> web-app I built for the <a target="_blank" href="https://www.aepi.org.au">Alpha Epsilon Pi Australia</a>, featuring forums, contact list, blog, job listings and more.
+							<div class="half-break"></div>
+							<a target="_blank" href="https://github.com/J-Mo63/aepi-au-web">View Repository on GitHub</a>
+						</li>
+						<li>
+							<b>The Liner Notes: </b>An album review site I built using <mark>Python Django</mark>, employing a minimalistic, highly stylised aesthetic.
+							<div class="half-break"></div>
+							<a target="_blank" href="https://github.com/J-Mo63/liner-notes">View Repository on GitHub</a>
+						</li>
+						<li>
+							<b>Polity Web: </b>A <mark>React/Redux web-client</mark> for  in-depth analysis & research on the latest political commentary & news.
+							<div class="half-break"></div>
+							<a target="_blank" href="https://github.com/J-Mo63/polity-web">View Repository on GitHub</a>
+						</li>
+						<li>
+							<b>Texbooks With Friends: </b>A web-app for textbook listing and exchange built in <mark>Java EE</mark>, it takes advantage of <mark>JavaServerPages, JavaServlets and Twitter-Bootstrap</mark>.
+							<div class="half-break"></div>
+							<a target="_blank" href="https://github.com/TheCornflowerAssociation/textbooks-with-friends">View Repository on GitHub</a>
+						</li>
 					</div>
+				</ul>
+				<br>
+				<div class="centered-container">
+					<button id="more-software-button" onclick="toggleMore('more-software-button', 'more-software')"></button>
 				</div>
 			</div>
-			<br>
-			<br>
-			<br>
-			<div class="row" id="portfolio">
-				<div class="offset-md-2 col-md-8">
-					<hr>
-					<br>
-					<h1 class="text-center"><i class="fa fa-folder-open text-accent-colour mr-2"></i> Portfolio</h1>
-					<br>
-					<div class="row">
-						<div class="col-sm-6 col-md-4">
-							<div class="card">
-								<div class="img-banner-container">
-								    <img class="img-fluid img-banner" src="./res/project-banners/dailybrief.png">
-								</div>
-							    <div class="card-body">
-							        <h4 class="card-title">The Daily Brief</h4>
-							        <p class="card-text">A commercial <b>Android</b> app I built for Foreign Brief. Provides insights on the day ahead in politics, security and economics.</p>
-							        <a href="https://play.google.com/store/apps/details?id=com.foreign_brief.daily_brief" target="_blank" class="link-text pull-right"><span class="text-accent-colour">learn more</span></a>
-							    </div>
-							</div>
-							<br>
-						</div>
-						<div class="col-sm-6 col-md-4">
-							<div class="card">
-								<div class="img-banner-container">
-								    <img class="img-fluid img-banner" src="./res/project-banners/frostcrystal.png">
-								</div>
-							    <div class="card-body">
-							        <h4 class="card-title">Frost Crystal</h4>
-							        <p class="card-text">A barebones, <b>open source</b>, <b>modular API</b> for the <b>Crystal Language</b> for super light-weight deployments in <b>Docker</b>... and it's super cool.</p>
-							        <a href="https://github.com/J-Mo63/frost-crystal" target="_blank" class="link-text pull-right"><span class="text-accent-colour">learn more</span></a>
-							    </div>
-							</div>
-							<br>
-						</div>
-						<div class="col-sm-6 col-md-4">
-							<div class="card">
-								<div class="img-banner-container">
-								    <img class="img-fluid img-banner" src="./res/project-banners/pongagon.png">
-								</div>
-							    <div class="card-body">
-							        <h4 class="card-title">Pongagon</h4>
-							        <p class="card-text">A mobile game in <b>Unity</b> for <b>Android &amp; iOS</b> I helped develop as part of <b>Sudo-Code Software</b>. It has accrued over <b>20k downloads</b> on the AppStore alone.</p>
-							        <a href="https://sudocodesoftware.github.io/pongagon.html" target="_blank" class="link-text pull-right"><span class="text-accent-colour">learn more</span></a>
-							    </div>
-							</div>
-							<br>
-						</div>
-                        <div class="col-sm-6 col-md-4">
-                            <div class="card">
-                                <div class="img-banner-container">
-                                    <img class="img-fluid img-banner" src="./res/project-banners/utsdiscover.png">
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="card-title">UTS Discover</h4>
-                                    <p class="card-text">A <b>Unity</b> app for <b>Android & iOS</b> that utilises <b>AR and VR technologies</b>, and won the UTS Autumn 2019 Prototype Exhibit for <b>best software prototype</b>.</p>
-                                    <a href="https://github.com/ar4eva4now/uts-discover" target="_blank" class="link-text pull-right"><span class="text-accent-colour">learn more</span></a>
-                                </div>
-                            </div>
-                            <br>
-                        </div>
-						<div class="col-sm-6 col-md-4">
-							<div class="card">
-								<div class="img-banner-container">
-								    <img class="img-fluid img-banner" src="./res/project-banners/myway.png">
-								</div>
-							    <div class="card-body">
-							        <h4 class="card-title">MyWay</h4>
-							        <p class="card-text">An <b>open source project</b> for a barebones <b>Ruby Sinatra</b> framework with modular boilerplates for both <b>API</b> and <b>web-app</b> usage... and it's super suave.</p>
-							        <a href="https://github.com/J-Mo63/myway-sinatra" target="_blank" class="link-text pull-right"><span class="text-accent-colour">learn more</span></a>
-							    </div>
-							</div>
-							<br>
-						</div>
-						<div class="col-sm-6 col-md-4">
-							<div class="card">
-								<div class="img-banner-container">
-								    <img class="img-fluid img-banner" src="./res/project-banners/linernotes.png">
-								</div>
-							    <div class="card-body">
-							        <h4 class="card-title">The Liner Notes</h4>
-							        <p class="card-text">An album review site I built using  <b>Python Django</b>. It has a minimalistic, highly stylised aesthetic and I post music reviews to it infrequently.</p>
-							        <a href="https://github.com/J-Mo63/liner-notes" target="_blank" class="link-text pull-right"><span class="text-accent-colour">learn more</span></a>
-							    </div>
-							</div>
-							<br>
-						</div>
-						<div class="col-sm-6 col-md-4">
-							<div class="card">
-								<div class="img-banner-container">
-								    <img class="img-fluid img-banner" src="./res/project-banners/aepi.png">
-								</div>
-							    <div class="card-body">
-							        <h4 class="card-title">AEPi Australia Site</h4>
-							        <p class="card-text">A <b>Ruby on Rails</b> web-app I built for the Alpha Epsilon Pi chapter in Sydney, featuring forums, contact list, blog, job listings and more.</p>
-							        <a href="http://www.aepi.org.au" target="_blank" class="link-text pull-right"><span class="text-accent-colour">learn more</span></a>
-							    </div>
-							</div>
-							<br>
-						</div>
-						<div class="col-sm-6 col-md-4">
-							<div class="card">
-								<div class="img-banner-container">
-								    <img class="img-fluid img-banner" src="./res/project-banners/soundstream.png">
-								</div>
-							    <div class="card-body">
-							        <h4 class="card-title">sound.stream</h4>
-							        <p class="card-text">A social music streaming platform built as part of a uni group. This YouTube streaming web-app was built with <b>Node.js</b>, utilising <b>Express</b> and <b>Keystone.js</b>.</p>
-							        <a href="http://soundstream-app.com" target="_blank" class="link-text pull-right"><span class="text-accent-colour">learn more</span></a>
-							    </div>
-							</div>
-							<br>
-						</div>
-						<div class="col-sm-6 col-md-4">
-							<div class="card">
-								<div class="img-banner-container">
-								    <img class="img-fluid img-banner" src="./res/project-banners/bubbletime.png">
-								</div>
-							    <div class="card-body">
-							        <h4 class="card-title">BubbleTime</h4>
-							        <p class="card-text">BubbleTime is an <b>iOS</b> game about popping bubbles. Built in <b>Swift</b>, it takes advantage of Apple's <b>CoreMotion</b> and <b>DynamicAnimator</b> libraries.</p>
-							        <a href="https://itunes.apple.com/au/app/bubbletime/id1404117360?mt=8" target="_blank" class="link-text pull-right"><span class="text-accent-colour">learn more</span></a>
-							    </div>
-							</div>
-							<br>
-						</div>
+		</div>
+		<div class="section">
+			<p class="section-heading">Other Things I've Done</p>
+			<div class="section-games">
+				<div class="section-game">
+					<p class="section-game-title">A Review of Agency Architectures in Interactive Drama Systems</p>
+					<div class="section-game-container">
+						<img class="section-game-image" src="./game-images/ieee-cog-paper.png">
+						<p class="section-game-text">In August of 2020, I had my games design <mark>research paper on AI and narrative design</mark> titled "A Review of Agency Architectures in Interactive Drama Systems" <mark>published in the proceedings of the IEEE Conference on Games (CoG) 2020</mark>. The paper is a <mark>review of the interactive drama field</mark> in video games research, re-framing the field's key literature as existing upon a spectrum based on their use of scripted or emergent properties - theorising and proposing a new style of hybrid, emergent-scripted solution to drama manager design.<br><br>During the conference, I delivered a recorded <mark>presentation, summarising the paper's content</mark>, findings, and providing additional background on the research area of the interactive drama field. The paper was eventually adopted as the base of my honours research into <mark>agent-based drama management systems</mark>.<br><br><a target="_blank" href="https://ieee-cog.org/2020/papers/paper_110.pdf">View Paper on Conference Site</a><br><br><a target="_blank" href="https://ieeexplore.ieee.org/document/9231655">Get Paper on IEEE Xplore</a><br><br><a target="_blank" href="https://www.youtube.com/watch?v=S3ZH-K8Wrbg">Watch Presentation on YouTube</a></p>
 					</div>
 				</div>
-			</div>
-			<br>
-			<br>
-			<br>
-			<div class="row" id="contact-me">
-				<div class="offset-md-2 col-md-8">
-					<hr>
-					<br>
-					<h1 class="text-center"><i class="fa fa-envelope text-accent-colour mr-2"></i> Contact Me</h1>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							<div class="card horizontal-padding-sm">
-								<div class="container">
-									<br>
-									<h4 class="text-center">Send me a message or...</h4>
-									<br>
-									<div class="md-form">
-										<form action="https://formspree.io/jdmoallem@gmail.com" method="POST">
-											<input type="hidden" name="_subject" value="Message from j-mo63.github.io" />
-											<input type="hidden" name="_next" value="https://j-mo63.github.io" />
-										    <input type="text" class="form-control" placeholder="name" name="name">
-										    <input type="email" class="form-control" placeholder="email" name="_replyto">
-										    <textarea class="form-control md-textarea" rows="3" placeholder="message" name="message"></textarea>
-										    <input type="text" name="_gotcha" style="display:none" />
-										    <br>
-										    <input type="submit" value="Submit" class="btn primary-colour">
-										</form>
-									</div>
-								</div>
-							</div>
-							<br>
-						</div>
-						<div class="col-md-6">
-							<div class="card primary-colour text-white horizontal-padding-sm">
-								<div class="container">
-									<br>
-									<h4 class="text-center">... contact me on</h4>
-									<br>
-									<div class="row">
-										<div class="col-md-6">
-											<button type="button" class="btn accent-colour btn-full-width facebook-colour" onclick="window.open('https://www.facebook.com/J.Mo63', '_blank')"><i class="fab fa-facebook-f mr-2"></i> Facebook</button>
-										</div>
-										<div class="col-md-6">
-											<button type="button" class="btn accent-colour btn-full-width twitter-colour" onclick="window.open('https://twitter.com/J_Mo63', '_blank')"><i class="fab fa-twitter mr-2"></i> Twitter</button>
-										</div>
-										<div class="col-md-6">
-											<button type="button" class="btn accent-colour btn-full-width linkedin-colour" onclick="window.open('https://www.linkedin.com/in/jmo63/', '_blank')"><i class="fab fa-linkedin-in mr-2"></i> LinkedIn</button>
-										</div>
-										<div class="col-md-6">
-											<button type="button" class="btn accent-colour btn-full-width gmail-colour" onclick="window.location = 'mailto:' + getEmail()"><i class="fa fa-envelope mr-2"></i> Email</button>
-										</div>
-									</div>
-									<br>
-								</div>
-							</div>
-							<br>
-						</div>
+				<div class="section-game">
+					<p class="section-game-title">Agile Adventures - Game Story Bible</p>
+					<div class="section-game-container">
+						<img class="section-game-image" src="./game-images/agile_adventures.png">
+						<p class="section-game-text">As a part of a university subject in <mark>narrative design for games</mark>, I created a cross-section of a "game story bible". The document spans a number of different design scopes, from dialogue to item descriptions, NPC barks, quest details, storyboarding, and more. Agile Adventures is my take on a <mark>fantasy RPG satire</mark>, where adventuring is big business, and every kid wants to make it in big-league adventuring.<br><br><a target="_blank" href="./documents/Story Bible - Agile Adventures.pdf">View PDF Document</a></p>
+					</div>
+				</div>
+				<div class="section-game">
+					<p class="section-game-title">GDC Game Narrative Review & Poster Presentation</p>
+					<div class="section-game-container">
+						<img class="section-game-image" src="./game-images/poster.png">
+						<p class="section-game-text">In early 2019 I was <mark>invited to attend and present my work at GDC</mark> after <a target="_blank" href="https://www.gdcvault.com/gamenarrativereview">winning gold for a paper I had written</a>, as selected by a panel of industry veteran narrative designers.<br><br>The paper lays out my critiques of the <mark>narrative design</mark> of the game <i>Aviary Attorney</i>, applauding it for its use of setting to punctuate the themes of the game, as well as its broad-over-deep approach to the branching narrative. While some of the game's dialogue falls a bit flat, especially with regards to tone in certain sections, it is altogether a quality experience that deftly illustrates the powers unique to an interactive genre.<br><br>At the conference, I took part in the poster presentation session, where I was able to exhibit a poster that summarises my paper in a visual style to GDC attendees and a select number of professional game narrative designers.<br><br><a target="_blank" href="https://twvideo01.ubm-us.net/o1/vault/gdc2019/GameNarrativeReview/Jonathan-moallem-paper.pdf">View Document on GDC Vault</a></p>
 					</div>
 				</div>
 			</div>
 		</div>
-		<br>
-		<br>
+		<div class="footer-section">
+			<p class="footer-item">Developed by Jonathan Moallem, 2020<br>Inspired by Joeb Rogers</p>
+			<p class="footer-item social-links"><a target="_blank" href="https://github.com/J-Mo63">GITHUB</a> <a target="_blank" href="https://twitter.com/JonJonRespawned">TWITTER</a> <a target="_blank" href="https://www.linkedin.com/in/jmo63/">LINKEDIN</a> <a target="_blank" href="https://jonathanmoallem.com">WEBSITE</a> <a target="_blank" href="https://j-mo63.itch.io">ITCH.IO</a> <a href="" onClick="openEmail(); return false;">EMAIL</a></p>
+		</div>
 	</body>
 </html>
