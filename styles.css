@@ -154,6 +154,26 @@ button:active {
 	padding-bottom: 50px;
 }
 
+.section-roles {
+	flex: 2 0;
+	font-size: 20px;
+	font-family: 'RalewayLight';
+}
+
+.role-img {
+	shape-outside: circle();
+	border-radius: 50%;
+	width: 60px;
+	margin: 0 auto;
+	margin-right: 10px;
+}
+
+.role-table td {
+	font-family: 'RalewayLight';
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
 .section-body {
 	flex: 2 0;
 	font-size: 20px;
@@ -167,7 +187,7 @@ button:active {
 	width: 20vw;
 	min-height: 150px;
 	min-width: 150px;
-  	margin: 0 auto;
+  margin: 0 auto;
 }
 
 .section-list {
@@ -287,6 +307,18 @@ button:active {
 
 
 @media only screen and (max-width: 992px) {
+	.role-table {
+		font-size: 20px;
+		border-spacing: 0;
+	}
+	.role-table td {
+		margin: 0px;
+	}
+	.role-img {
+		width: 0px;
+		margin: 0px;
+		padding: 0px;
+	}
 	.section {
 		flex-direction: column;
 	}
